@@ -1,0 +1,37 @@
+{
+  "name": "reactnd-project-readable",
+  "version": "1.0.0",
+  "description": "Udacity React Nanodegree Project - Readable",
+  "license": "MIT",
+  "author": {
+    "name": "Willian Vargas",
+    "email": "contato@willianvargas.com"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "udacity",
+    "readable"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react-app": "^3.0.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
