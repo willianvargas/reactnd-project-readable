@@ -44,8 +44,8 @@
       "checkChildContextTypes": true
     }],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "react/jsx-indent": ["error", 4, { "checkAttributes": true }],
-    "react/jsx-indent-props": ["error", 4],
+    "react/jsx-indent": ["error", 2, { "checkAttributes": true }],
+    "react/jsx-indent-props": ["error", 2],
     "react/no-did-update-set-state": 0
   },
   "extends": [

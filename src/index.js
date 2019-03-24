@@ -7,20 +7,21 @@ import thunkMiddleware from 'redux-thunk'
 
 import { unregister } from './serviceWorker'
 
-import App from './App'
+import App from './components/App'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
-    composeEnhancers(applyMiddleware(thunkMiddleware)),
+  composeEnhancers(applyMiddleware(thunkMiddleware)),
 )
 
 render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>, document.getElementById('app')
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById('app')
 )
 
 unregister()

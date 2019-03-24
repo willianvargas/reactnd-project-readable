@@ -19,6 +19,7 @@
 # ide
 *.pyc
 .idea
+.vscode
 
 # lock files
 package-lock.json*
