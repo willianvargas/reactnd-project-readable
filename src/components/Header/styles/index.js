@@ -32,16 +32,16 @@ const styles = theme => ({
     margin: [[0, 'auto']],
     padding: [[0, theme.spacing.unit * 2]]
   },
-  navItem: {
+  homeBtn: {
     color: theme.palette.grey['900'],
     fontWeight: 500,
     fontSize: '1rem'
   },
-  navItemIcon: {
+  homeBtnIcon: {
     marginRight: theme.spacing.unit * 0.5,
     fontSize: '1.4rem'
   },
-  navItemActive: {
+  homeBtnActive: {
     color: theme.palette.primary.main,
     fontWeight: 600
   }

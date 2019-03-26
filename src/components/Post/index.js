@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { connect } from 'react-redux'
+import compose from 'recompose/compose'
 
 import { withStyles } from '@material-ui/core/styles'
 import { Paper, Grid, Typography, IconButton, Button } from '@material-ui/core'
@@ -12,23 +14,16 @@ import {
 import CommentBtn from './components/CommentBtn'
 import styles from './styles'
 
+const trucanteLength = 140
 
-const post = {
-  id: '8xf0y6ziyjabvozdd253nd',
-  timestamp: 1467166872634,
-  title: 'Udacity is the best place to learn React',
-  body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',
-  author: 'thingtwo',
-  category: 'react',
-  voteScore: 6,
-  deleted: false,
-  commentCount: 2
-}
-
-const trucanteLength = 280
-
-const Post = ({ classes }) => {
-  const truncate = post.body.length > trucanteLength
+const Post = ({ classes, post }) => {
+  if (post === null) {
+    return (
+      <p>
+        {`This post doesn't exists`}
+      </p>
+    )
+  }
   return (
     <Paper className={classes.root} elevation={0}>
       <Grid
@@ -78,7 +73,7 @@ const Post = ({ classes }) => {
         </Grid>
       </Grid>
       <Grid className={classes.body}>
-        <Typography variant="body1">
+        <Typography className={classes.bodyText} variant="body1">
           {post.body.length > trucanteLength ? (
             post.body.substring(0, trucanteLength).concat('...') 
           ) : (
@@ -88,7 +83,7 @@ const Post = ({ classes }) => {
       </Grid>
       <Grid className={classes.footer} direction="row-reverse" justify="space-between" container>
         <CommentBtn commentCount={post.commentCount} />
-        {truncate && (
+        {post.body.length > trucanteLength && (
           <Button className={classes.readMoreBtn}>Continue reading...</Button>
         )}
       </Grid>
@@ -97,7 +92,22 @@ const Post = ({ classes }) => {
 }
 
 Post.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  post: PropTypes.object
 }
 
-export default withStyles(styles, { withTheme: true })(Post)
+Post.defaultProps = {
+  post: null
+}
+
+const mapStateToProps = ({ posts: { data } }, { id }) => {
+  const post = data[id]
+  return {
+    post
+  }
+}
+
+export default compose(
+  withStyles(styles, { withTheme: true }),
+  connect(mapStateToProps, null)
+)(Post)

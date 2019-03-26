@@ -56,6 +56,9 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
     paddingRight: 72
   },
+  bodyText: {
+    fontSize: '1.2rem'
+  },
   footer: {
     padding: [[theme.spacing.unit, 0]]
   },

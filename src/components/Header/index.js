@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createElement } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { NavLink } from 'react-router-dom'
@@ -7,28 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Button } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 
+import Categories from '../Categories'
 import styles from './styles'
-
-const categories = [
-  {
-    name: 'react',
-    path: 'react'
-  },
-  {
-    name: 'redux',
-    path: 'redux'
-  },
-  {
-    name: 'udacity',
-    path: 'udacity'
-  }
-]
-
-categories.unshift({
-  name: 'home',
-  path: '',
-  icon: HomeIcon
-})
 
 class Header extends Component {
 
@@ -67,24 +47,21 @@ class Header extends Component {
           )}
         >
           <Grid className={classes.navContent} spacing={8} container>
-            {categories.map(category => (
-              <Grid key={category.name} item>
-                <Button
-                  className={classes.navItem}
-                  activeClassName={classes.navItemActive}
-                  to={'/'.concat(category.path)}
-                  component={NavLink}
-                  exact
-                >
-                  {category.icon && (
-                    createElement(category.icon, {
-                      className: classes.navItemIcon
-                    })
-                  )}
-                  {category.name}
-                </Button>
-              </Grid>
-            ))}
+            <Grid item>
+              <Button
+                className={classes.homeBtn}
+                activeClassName={classes.homeBtnActive}
+                to="/"
+                component={NavLink}
+                exact
+              >
+                <HomeIcon className={classes.homeBtnIcon} />
+                Home
+              </Button>
+            </Grid>
+            <Grid item>
+              <Categories />
+            </Grid>
           </Grid>
         </Grid>
       </Fragment>

@@ -47,7 +47,6 @@ export const getCategoryPosts = (id) =>
 export const getPosts = () =>
   fetch(`${api}/posts`, requestPayload('GET'))
     .then(res => res.json())
-    .then(data => data.posts)
 
 /**
  * Add a new post

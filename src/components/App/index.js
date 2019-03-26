@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import compose from 'recompose/compose'
 
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import { CssBaseline, Grid } from '@material-ui/core'
@@ -7,11 +9,16 @@ import { CssBaseline, Grid } from '@material-ui/core'
 import MuiTheme from '../../styles/MuiTheme'
 import Header from '../Header'
 import PostList from '../PostList'
-
 import styles from './styles'
+import handleInitialData from './actions'
 
-/* eslint-disable-next-line */
 class App extends Component {
+
+  componentDidMount() {
+    const { handleInitialData } = this.props
+    handleInitialData()
+  }
+
   render() {
     const { classes } = this.props
     return (
@@ -27,7 +34,21 @@ class App extends Component {
 }
 
 App.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  handleInitialData: PropTypes.func.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(App)
+// const mapStateToProps = ({ app }) => ({
+//   user: app.user
+// })
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleInitialData: () => dispatch(handleInitialData()),
+  }
+}
+
+export default compose(
+  withStyles(styles, { withTheme: true }),
+  connect(null, mapDispatchToProps)
+)(App)

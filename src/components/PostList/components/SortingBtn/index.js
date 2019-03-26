@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import compose from 'recompose/compose'
 
 import { withStyles } from '@material-ui/core/styles'
 import {
@@ -14,6 +16,8 @@ import {
 import SortIcon from '@material-ui/icons/Sort'
 
 import styles from './styles'
+import { postSorting } from '../../actions'
+import { setPostSorting } from './actions'
 
 class SortbyBtn extends Component {
 
@@ -25,9 +29,10 @@ class SortbyBtn extends Component {
     this.setState(state => ({ open: !state.open }))
   }
 
-  handleClose = (option) => {
-    if (option) {
-      console.log(option)
+  handleClose = (sorting) => {
+    if (sorting) {
+      const { setPostSorting } = this.props
+      setPostSorting(sorting)
     }
     this.setState({ open: false })
   }
@@ -60,17 +65,17 @@ class SortbyBtn extends Component {
                 <ClickAwayListener onClickAway={this.handleClose}>
                   <MenuList>
                     <MenuItem
-                      onClick={() => this.handleClose('score')}
+                      onClick={() => this.handleClose(postSorting.SORT_BY_SCORE)}
                     >
                       Most popular
                     </MenuItem>
                     <MenuItem
-                      onClick={() => this.handleClose('dateDesc')}
+                      onClick={() => this.handleClose(postSorting.SORT_BY_NEW)}
                     >
                       Date added (newest)
                     </MenuItem>
                     <MenuItem
-                      onClick={() => this.handleClose('dateAsc')}
+                      onClick={() => this.handleClose(postSorting.SORT_BY_OLD)}
                     >
                       Date added (oldest)
                     </MenuItem>
@@ -86,7 +91,15 @@ class SortbyBtn extends Component {
 }
 
 SortbyBtn.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  setPostSorting: PropTypes.func.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(SortbyBtn)
+const mapDispatchToProps = (dispatch) => ({
+  setPostSorting: (sorting) => dispatch(setPostSorting(sorting))
+})
+
+export default compose(
+  withStyles(styles, { withTheme: true }),
+  connect(null, mapDispatchToProps)
+)(SortbyBtn)
