@@ -13,27 +13,23 @@ import getPostsWithSorting from './selectors'
 import ReactLogo from '../../images/logo.svg'
 
 const PostList = ({ classes, posts }) => (
-  <Grid className={classes.root}>
-    {posts.length === 0 ? (
-      <Grid className={classes.placeholder} direction="column" alignItems="center" container>
-        <img className={classes.placeholderImg} src={ReactLogo} alt="react" />
-        <Typography variant="body1" align="center">
-          No posts here.
-        </Typography>
+  posts.length === 0 ? (
+    <Grid className={classes.placeholder} direction="column" alignItems="center" container>
+      <img className={classes.placeholderImg} src={ReactLogo} alt="react" />
+      <Typography variant="body1" align="center">
+        No posts here.
+      </Typography>
+    </Grid>
+  ) : (
+    <Fragment>
+      <Grid className={classes.actions} justify="flex-end" container>
+        <SortingBtn />
       </Grid>
-    ) : (
-      <Fragment>
-        <Grid className={classes.actions} justify="flex-end" container>
-          <SortingBtn />
-        </Grid>
-        <Grid>
-          {posts.map(post => (
-            <Post key={post} id={post} />
-          ))}
-        </Grid>
-      </Fragment>
-    )}
-  </Grid>
+      {posts.map(post => (
+        <Post key={post} id={post} />
+      ))}
+    </Fragment>
+  )
 )
 
 PostList.propTypes = {

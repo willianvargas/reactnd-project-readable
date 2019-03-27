@@ -10,6 +10,7 @@ import { CssBaseline, Grid } from '@material-ui/core'
 import MuiTheme from '../../styles/MuiTheme'
 import Header from '../Header'
 import PostList from '../PostList'
+import PostPage from '../PostPage'
 import styles from './styles'
 import handleInitialData from './actions'
 
@@ -26,9 +27,12 @@ class App extends Component {
       <MuiThemeProvider theme={MuiTheme}>
         <CssBaseline />
         <Router>
-          <Grid className={classes.root}>
+          <Grid>
             <Header />
-            <Route path='/:category?' component={PostList} />
+            <Grid className={classes.page}>
+              <Route path='/:category?' component={PostList} exact />
+              <Route path='/post/:postId' component={PostPage} exact />
+            </Grid>
           </Grid>
         </Router>
       </MuiThemeProvider>

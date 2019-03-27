@@ -4,12 +4,9 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    margin: [[theme.spacing.unit * 4, 0]],
+    margin: [[theme.spacing.unit, 0, theme.spacing.unit * 4]],
     padding: theme.spacing.unit * 3,
-    border: [[1, 'solid', theme.palette.grey['A100']]],
-    '&:first-child': {
-      marginTop: theme.spacing.unit
-    }
+    border: [[1, 'solid', theme.palette.grey['A100']]]
   },
   header: {
     paddingBottom: theme.spacing.unit * 2
