@@ -18,9 +18,9 @@ const trucanteLength = 140
 const Post = ({ classes, post }) => {
   if (post === null) {
     return (
-      <p>
-        {`This post doesn't exists`}
-      </p>
+      <Typography variant="body1" align="center">
+        {`This post doesn't exists.`}
+      </Typography>
     )
   }
   return (

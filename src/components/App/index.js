@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import { CssBaseline, Grid } from '@material-ui/core'
@@ -24,10 +25,12 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={MuiTheme}>
         <CssBaseline />
-        <Grid className={classes.root}>
-          <Header />
-          <PostList />
-        </Grid>
+        <Router>
+          <Grid className={classes.root}>
+            <Header />
+            <Route path='/:category?' component={PostList} />
+          </Grid>
+        </Router>
       </MuiThemeProvider>
     )
   }
