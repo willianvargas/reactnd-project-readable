@@ -1,7 +1,7 @@
-import { grey, green, red } from '@material-ui/core/colors'
-
-
 const styles = theme => ({
+  link: {
+    textDecoration: 'none'
+  },
   root: {
     flexGrow: 1,
     margin: [[theme.spacing.unit * 4, 0]],
@@ -26,31 +26,15 @@ const styles = theme => ({
     color: theme.palette.grey['700'],
     fontSize: '0.9rem'
   },
-  scoreBtn: {
-    padding: theme.spacing.unit * 0.5,
-    color: grey[400],
-    '&:hover $scoreBtnAdd, &:focus $scoreBtnAdd': {
-      color: green[600]
-    },
-    '&:hover $scoreBtnRemove, &:focus $scoreBtnRemove': {
-      color: red[600]
-    }
+  divider: {
+    marginLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit,
+    borderLeft: [[1, 'solid', theme.palette.grey['400']]],
+    height: 14
   },
-  scoreBtnAdd: {
-  },
-  scoreBtnRemove: {
-  },
-  scoreContent: {
-    padding: theme.spacing.unit * 0.5
-  },
-  scoreText: {
-    fontSize: '2rem'
-  },
-  scoreTextGreen: {
-    color: green[700]
-  },
-  scoreTextRed: {
-    color: red[700]
+  date: {
+    color: theme.palette.grey['700'],
+    fontSize: '0.9rem'
   },
   body: {
     paddingBottom: theme.spacing.unit * 2,

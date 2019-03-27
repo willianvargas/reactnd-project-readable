@@ -10,3 +10,8 @@ export const normalizePostsShape = (list) => {
   list.forEach(post => state[post.id] = post)
   return state
 } 
+
+export const formatDate = (date) => {
+  const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+  return date.toLocaleDateString(undefined, options)
+}

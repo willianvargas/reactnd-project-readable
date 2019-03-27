@@ -15,7 +15,7 @@ const requestPayload = (method, data) => {
     }
   }
   if (data) {
-    payload['body'] = JSON.stringify({ data })
+    payload['body'] = JSON.stringify(data)
   }
   return payload
 }

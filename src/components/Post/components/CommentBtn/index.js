@@ -7,20 +7,20 @@ import CommentIcon from '@material-ui/icons/ModeComment'
 
 import styles from './styles'
 
-const CommentBtn = ({ classes, commentCount }) => (
+const CommentBtn = ({ classes, count }) => (
   <Button className={classes.root}>
     <CommentIcon className={classes.icon} />
-    {commentCount === 0 ?
-      'Comment' : commentCount === 1 ?
+    {count === 0 ?
+      'Comment' : count === 1 ?
         '1 comment' :
-        `${commentCount} comments`
+        `${count} comments`
     }
   </Button>
 )
 
 CommentBtn.propTypes = {
   classes: PropTypes.object.isRequired,
-  commentCount: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired
 }
 
 export default withStyles(styles, { withTheme: true })(CommentBtn)

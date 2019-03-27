@@ -1,18 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
+
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
+import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import { Paper, Grid, Typography, IconButton, Button } from '@material-ui/core'
-import {
-  Add as AddIcon,
-  Remove as RemoveIcon
-} from '@material-ui/icons'
+import { Paper, Grid, Typography, Button } from '@material-ui/core'
 
 import CommentBtn from './components/CommentBtn'
+import VoteScore from './components/VoteScore'
 import styles from './styles'
+import { formatDate } from '../../utils/helpers'
 
 const trucanteLength = 140
 
@@ -25,69 +24,53 @@ const Post = ({ classes, post }) => {
     )
   }
   return (
-    <Paper className={classes.root} elevation={0}>
-      <Grid
-        className={classes.header}
-        direction="row"
-        alignItems="center"
-        justify="space-between"
-        wrap="nowrap"
-        container
-      >
-        <Grid direction="column" container item>
-          <Typography className={classes.category} variant="body1" gutterBottom>
-            {post.category}
-          </Typography>
-          <Typography className={classes.title} variant="h3" gutterBottom>
-            {post.title}
-          </Typography>
-          <Typography className={classes.author} variant="body1">
-            {'by '}
-            {post.author}
-          </Typography>
-        </Grid>
-        <Grid direction="column" alignItems="center" xs container item>
-          <Grid>
-            <IconButton className={classes.scoreBtn}>
-              <AddIcon className={classes.scoreBtnAdd} />
-            </IconButton>
-          </Grid>
-          <Grid className={classes.scoreContent}>
-            <Typography
-              className={classNames(
-                classes.scoreText,
-                post.voteScore > 0 ?
-                  classes.scoreTextGreen :
-                  classes.scoreTextRed
-              )}
-              variant="h3"
-            >
-              {post.voteScore}
+    <Link className={classes.link} to={'/post/'.concat(post.id)}>
+      <Paper className={classes.root} elevation={0}>
+        <Grid
+          className={classes.header}
+          direction="row"
+          alignItems="center"
+          justify="space-between"
+          wrap="nowrap"
+          container
+        >
+          <Grid direction="column" container item>
+            <Typography className={classes.category} variant="body1" gutterBottom>
+              {post.category}
             </Typography>
+            <Typography className={classes.title} variant="h3" gutterBottom>
+              {post.title}
+            </Typography>
+            <Grid alignItems="center" container>
+              <Typography className={classes.author} variant="body1">
+                {'by '}
+                {post.author}
+              </Typography>
+              <i className={classes.divider} />
+              <Typography className={classes.date} variant="body1">
+                {formatDate(new Date(post.timestamp))}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid>
-            <IconButton className={classes.scoreBtn}>
-              <RemoveIcon className={classes.scoreBtnRemove} />
-            </IconButton>
-          </Grid>
+          <VoteScore score={post.voteScore} id={post.id} />
         </Grid>
-      </Grid>
-      <Grid className={classes.body}>
-        <Typography className={classes.bodyText} variant="body1">
-          {post.body.length > trucanteLength ? (
-            post.body.substring(0, trucanteLength).concat('...') 
-          ) : (
-            post.body
+        <Grid className={classes.body}>
+          <Typography className={classes.bodyText} variant="body1">
+            {post.body.length > trucanteLength ? (
+              post.body.substring(0, trucanteLength).concat('...') 
+            ) : (
+              post.body
+            )}
+          </Typography>
+        </Grid>
+        <Grid className={classes.footer} direction="row-reverse" justify="space-between" container>
+          <CommentBtn count={post.commentCount} />
+          {post.body.length > trucanteLength && (
+            <Button className={classes.readMoreBtn}>Continue reading...</Button>
           )}
-        </Typography>
-      </Grid>
-      <Grid className={classes.footer} direction="row-reverse" justify="space-between" container>
-        <CommentBtn commentCount={post.commentCount} />
-        {post.body.length > trucanteLength && (
-          <Button className={classes.readMoreBtn}>Continue reading...</Button>
-        )}
-      </Grid>
-    </Paper>
+        </Grid>
+      </Paper>
+    </Link>
   )
 }
 
@@ -102,9 +85,7 @@ Post.defaultProps = {
 
 const mapStateToProps = ({ posts: { data } }, { id }) => {
   const post = data[id]
-  return {
-    post
-  }
+  return { post }
 }
 
 export default compose(

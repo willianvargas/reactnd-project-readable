@@ -62,7 +62,7 @@ class SortbyBtn extends Component {
               {...TransitionProps}
             >
               <Paper>
-                <ClickAwayListener onClickAway={this.handleClose}>
+                <ClickAwayListener onClickAway={() => this.handleClose()}>
                   <MenuList>
                     <MenuItem
                       onClick={() => this.handleClose(postSorting.SORT_BY_SCORE)}

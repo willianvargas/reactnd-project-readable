@@ -38,10 +38,6 @@ App.propTypes = {
   handleInitialData: PropTypes.func.isRequired
 }
 
-// const mapStateToProps = ({ app }) => ({
-//   user: app.user
-// })
-
 const mapDispatchToProps = (dispatch) => {
   return {
     handleInitialData: () => dispatch(handleInitialData()),
