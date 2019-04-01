@@ -35,7 +35,7 @@ class Comment extends Component {
           container
         >
           <Grid direction="column" container item>
-            <Typography className={classes.author} variant="h4" gutterBottom>
+            <Typography variant="h4" gutterBottom>
               {comment.author}
             </Typography>
             <Typography className={classes.date} variant="body2">

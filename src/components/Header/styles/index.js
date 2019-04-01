@@ -5,8 +5,6 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2.5,
   },
   title: {
-    fontSize: '2rem',
-    fontWeight: 600,
     color: '#0d67b0'
   },
   navContainer: {

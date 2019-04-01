@@ -7,9 +7,6 @@ const styles = theme => ({
       borderBottom: 'none'
     }
   },
-  author: {
-    fontSize: '1.4rem'
-  },
   date: {
     color: theme.palette.grey['700']
   },

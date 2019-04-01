@@ -47,7 +47,7 @@ class Post extends Component {
               <Typography className={classes.category} variant="body1" gutterBottom>
                 {post.category}
               </Typography>
-              <Typography className={classes.title} variant="h2" gutterBottom>
+              <Typography variant="h2" gutterBottom>
                 {post.title}
               </Typography>
               <Grid alignItems="center" container>

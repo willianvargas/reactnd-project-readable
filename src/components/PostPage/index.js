@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
@@ -9,6 +9,7 @@ import { Grid, Paper, Typography } from '@material-ui/core'
 import { handlePostComments } from './actions'
 import getPostComments from './selectors'
 import Post from '../Post'
+import NewComment from '../NewComment'
 import Comment from '../Comment'
 import styles from './styles'
 
@@ -24,18 +25,15 @@ class PostPage extends Component {
     return (
       <Grid className={classes.root}>
         <Post id={postId} complete />
-        {comments.length > 0 && (
-          <Fragment>
-            <Typography className={classes.title} variant="h3" align="center">
-              Comments
-            </Typography>
-            <Paper className={classes.comments} elevation={0}>
-              {comments.map(comment => (
-                <Comment key={comment} id={comment} />
-              ))}
-            </Paper>
-          </Fragment>
-        )}
+        <Typography variant="h3" align="center">
+          Comments
+        </Typography>
+        <Paper className={classes.comments} elevation={0}>
+          <NewComment parentId={postId} />
+          {comments.map(comment => (
+            <Comment key={comment} id={comment} />
+          ))}
+        </Paper>
       </Grid>
     )
   }

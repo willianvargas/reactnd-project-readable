@@ -16,9 +16,6 @@ const styles = theme => ({
     textTransform: 'uppercase',
     color: theme.palette.grey['A200']
   },
-  title: {
-    fontSize: '1.8rem'
-  },
   author: {
     color: theme.palette.grey['700'],
     fontSize: '0.9rem'
