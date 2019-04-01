@@ -47,7 +47,7 @@ App.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInitialData: () => dispatch(handleInitialData()),
+    handleInitialData: () => dispatch(handleInitialData())
   }
 }
 

@@ -19,7 +19,15 @@ export default createMuiTheme({
       fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
       fontWeight: 400
     },
+    h2: {
+      fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600
+    },
     h3: {
+      fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
+      fontWeight: 600
+    },
+    h4: {
       fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
       fontWeight: 600
     },

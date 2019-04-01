@@ -1,28 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { connect } from 'react-redux'
-import compose from 'recompose/compose'
 
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, IconButton, Typography } from '@material-ui/core'
 import { Add as AddIcon, Remove as RemoveIcon } from '@material-ui/icons'
 
 import styles from './styles'
-import handlePostVote from './actions'
 
 class VoteScore extends Component {
 
   addUpVote = (e) => {
     e.preventDefault()
-    const { id, handlePostVote } = this.props
-    handlePostVote(id, 'upVote')
+    const { onAddVote } = this.props
+    onAddVote('upVote')
   }
 
   addDownVote = (e) => {
     e.preventDefault()
-    const { id, handlePostVote } = this.props
-    handlePostVote(id, 'downVote')
+    const { onAddVote } = this.props
+    onAddVote('downVote')
   }
 
   render() {
@@ -59,16 +56,8 @@ class VoteScore extends Component {
 
 VoteScore.propTypes = {
   classes: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-  handlePostVote: PropTypes.func.isRequired
+  onAddVote: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  handlePostVote: (id, option) => dispatch(handlePostVote(id, option))
-})
-
-export default compose(
-  withStyles(styles, { withTheme: true }),
-  connect(null, mapDispatchToProps)
-)(VoteScore)
+export default withStyles(styles, { withTheme: true })(VoteScore)

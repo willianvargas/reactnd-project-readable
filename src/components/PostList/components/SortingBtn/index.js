@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import compose from 'recompose/compose'
 
 import { withStyles } from '@material-ui/core/styles'
 import {
@@ -17,7 +15,6 @@ import SortIcon from '@material-ui/icons/Sort'
 
 import styles from './styles'
 import { postSorting } from '../../actions'
-import { setPostSorting } from './actions'
 
 class SortbyBtn extends Component {
 
@@ -31,8 +28,8 @@ class SortbyBtn extends Component {
 
   handleClose = (sorting) => {
     if (sorting) {
-      const { setPostSorting } = this.props
-      setPostSorting(sorting)
+      const { onChange } = this.props
+      onChange(sorting)
     }
     this.setState({ open: false })
   }
@@ -92,14 +89,7 @@ class SortbyBtn extends Component {
 
 SortbyBtn.propTypes = {
   classes: PropTypes.object.isRequired,
-  setPostSorting: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setPostSorting: (sorting) => dispatch(setPostSorting(sorting))
-})
-
-export default compose(
-  withStyles(styles, { withTheme: true }),
-  connect(null, mapDispatchToProps)
-)(SortbyBtn)
+export default withStyles(styles, { withTheme: true })(SortbyBtn)

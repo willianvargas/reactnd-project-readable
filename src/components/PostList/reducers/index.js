@@ -1,31 +1,12 @@
-import { combineReducers } from 'redux'
+import { SORT_BY_SCORE, UPDATE_SORTING } from '../actions'
 
-import { RECEIVE_POSTS, UPDATE_POST_VOTESCORE } from '../actions'
-import sorting from '../components/SortingBtn/reducers'
-
-const data = (state = {}, action) => {
+const sorting = (state = SORT_BY_SCORE, action) => {
   switch (action.type) {
-    case RECEIVE_POSTS:
-      return {
-        ...state,
-        ...action.posts
-      }
-    case UPDATE_POST_VOTESCORE: {
-      const { id, voteScore } = action
-      return {
-        ...state,
-        [id]: {
-          ...state[id],
-          voteScore
-        }
-      }
-    }
-    default :
+    case UPDATE_SORTING:
+      return action.sorting
+    default:
       return state
   }
 }
 
-export default combineReducers({
-  data,
-  sorting
-})
+export default sorting

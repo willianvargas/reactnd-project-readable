@@ -1,6 +1,6 @@
 import { getCategories, getPosts } from '../../../utils/api'
 import { normalizePostsShape, normalizeCategoriesShape } from '../../../utils/helpers'
-import { receivePosts } from '../../PostList/actions'
+import { receivePosts } from '../../Post/actions'
 import { receiveCategories } from '../../Categories/actions'
 
 const handleInitialData = () => {

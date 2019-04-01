@@ -38,7 +38,6 @@ export const getCategories = () =>
 export const getCategoryPosts = (id) =>
   fetch(`${api}/${id}/posts`, requestPayload('GET'))
     .then(res => res.json())
-    .then(data => data.posts)
 
 /**
  * Get all of the posts. Useful for the main page when no 
@@ -112,7 +111,6 @@ export const deletePost = (id) =>
 export const getPostComments = (id) =>
   fetch(`${api}/posts/${id}/comments`, requestPayload('GET'))
     .then(res => res.json())
-    .then(data => data.comments)
 
 /**
  * Add a comment to a post

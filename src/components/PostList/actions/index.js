@@ -1,13 +1,12 @@
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SORT_BY_SCORE = 'SORT_BY_SCORE'
 export const SORT_BY_NEW = 'SORT_BY_NEW'
 export const SORT_BY_OLD = 'SORT_BY_OLD'
-export const UPDATE_POST_VOTESCORE = 'UPDATE_POST_VOTESCORE'
+export const UPDATE_SORTING = 'UPDATE_SORTING'
 
-export const receivePosts = (posts) => {
+export const updateSorting = (sorting) => {
   return {
-    type: RECEIVE_POSTS,
-    posts
+    type: UPDATE_SORTING,
+    sorting
   }
 }
 
@@ -15,12 +14,4 @@ export const postSorting = {
   SORT_BY_SCORE,
   SORT_BY_NEW,
   SORT_BY_OLD
-}
-
-export const updatePostVoteScore = (id, voteScore) => {
-  return {
-    type: UPDATE_POST_VOTESCORE,
-    id,
-    voteScore
-  }
 }
