@@ -85,7 +85,8 @@ export const setPostVote = (id, option) =>
 /**
  * Edit the details of an existing post
  * 
- * @param {object} data.id
+ * @param {object} data
+ * @param {string} data.id
  * @param {string} data.title
  * @param {string} data.body
  */
@@ -115,7 +116,8 @@ export const getPostComments = (id) =>
 /**
  * Add a comment to a post
  * 
- * @param {object} data.id - Any unique ID. As with posts, UUID is probably the best here
+ * @param {object} data
+ * @param {string} data.id - Any unique ID. As with posts, UUID is probably the best here
  * @param {string} data.timestamp
  * @param {string} data.body
  * @param {string} data.author
@@ -148,7 +150,8 @@ export const setCommentVote = (id, option) =>
 /**
  * Edit the details of an existing comment
  * 
- * @param {object} data.id
+ * @param {object} data
+ * @param {string} data.id
  * @param {string} data.timestamp
  * @param {string} data.body
  */

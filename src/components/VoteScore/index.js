@@ -25,7 +25,7 @@ class VoteScore extends Component {
   render() {
     const { classes, score } = this.props
     return (
-      <Grid direction="column" alignItems="center" xs container item>
+      <Grid className={classes.root} direction="column" alignItems="center" xs container item>
         <Grid>
           <IconButton className={classes.scoreBtn} onClick={this.addUpVote}>
             <AddIcon className={classes.scoreIconAdd} />

@@ -8,14 +8,24 @@ import { Grid, Typography } from '@material-ui/core'
 
 import { formatDate } from '../../utils/helpers'
 import VoteScore from '../VoteScore'
+import Menu from './components/Menu'
 import styles from './styles'
-import { handleAddVote } from './actions'
+import { handleAddVote, handleDelete } from './actions'
 
 class Comment extends Component {
 
   handleAddScore = (type) => {
     const { comment, handleAddVote } = this.props
     handleAddVote(comment.id, type)
+  }
+
+  handleEdit = () => {
+    console.log('edit')
+  }
+
+  handleDelete = () => {
+    const { comment, handleDelete } = this.props
+    handleDelete(comment.id)
   }
 
   render() {
@@ -29,7 +39,7 @@ class Comment extends Component {
         <Grid
           className={classes.root}
           direction="row"
-          alignItems="center"
+          alignItems="flex-start"
           justify="space-between"
           wrap="nowrap"
           container
@@ -46,6 +56,7 @@ class Comment extends Component {
             </Typography>
           </Grid>
           <VoteScore score={comment.voteScore} onAddVote={this.handleAddScore} />
+          <Menu onEdit={this.handleEdit} onDelete={this.handleDelete} />
         </Grid>
       )
     )
@@ -56,6 +67,7 @@ class Comment extends Component {
 Comment.propTypes = {
   classes: PropTypes.object.isRequired,
   handleAddVote: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
   comment: PropTypes.object
 }
 
@@ -70,7 +82,8 @@ const mapStateToProps = ({ comments }, { id }) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleAddVote: (id, type) => dispatch(handleAddVote(id, type))
+  handleAddVote: (id, type) => dispatch(handleAddVote(id, type)),
+  handleDelete: (id) => dispatch(handleDelete(id))
 })
 
 export default compose(

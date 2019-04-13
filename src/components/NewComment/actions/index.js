@@ -1,8 +1,14 @@
-export const handleAddComment = (id, text) => {
+import { addPostComment } from '../../../utils/api'
+import { normalizeCommentsShape } from '../../../utils/helpers'
+import { receiveComments } from '../../Comment/actions'
+
+const handleAddComment = (data) => {
   return (dispatch) => {
-    return setCommentVote(id, type)
-      .then(({ id, voteScore }) => {
-        dispatch(updateVoteScore(id, voteScore))
+    return addPostComment(data)
+      .then((data) => {
+        dispatch(receiveComments(normalizeCommentsShape([data])))
       })
   }
 }
+
+export default handleAddComment

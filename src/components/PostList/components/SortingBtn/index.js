@@ -45,6 +45,7 @@ class SortbyBtn extends Component {
             this.anchorEl = node
           }}
           aria-owns={open ? 'sortby-menu' : undefined}
+          aria-label="Sorting"
           aria-haspopup="true"
           onClick={this.handleToggle}
         >

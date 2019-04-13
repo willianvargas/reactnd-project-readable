@@ -2,8 +2,7 @@
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: [[theme.spacing.unit * 4, theme.spacing.unit * 3]],
-    borderBottom: [[1, 'solid', theme.palette.grey['A100']]]
+    padding: [[theme.spacing.unit * 4, theme.spacing.unit * 3]]
   },
   button: {
     marginTop: theme.spacing.unit,

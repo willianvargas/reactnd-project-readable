@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography, TextField, Button } from '@material-ui/core'
 import SendIcon from '@material-ui/icons/Send'
 
+import handleAddComment from './actions'
 import styles from './styles'
 
 class NewComment extends Component {
@@ -23,18 +24,19 @@ class NewComment extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { parentId } = this.props
+    const { parentId, handleAddComment } = this.props
     const { author, body } = this.state
     const id = UUID.v4()
     const timestamp = new Date().getTime()
-    const data = {
-      id,
-      parentId,
-      author,
-      body,
-      timestamp
-    }
-    console.log(data)
+    handleAddComment({ id, parentId, author, body, timestamp })
+    this.afterSubmit()
+  }
+
+  afterSubmit = () => {
+    this.setState({
+      author: '',
+      body: ''
+    })
   }
 
   render() {
@@ -90,11 +92,11 @@ class NewComment extends Component {
 NewComment.propTypes = {
   classes: PropTypes.object.isRequired,
   parentId: PropTypes.string.isRequired,
-  // handleAddVote: PropTypes.func.isRequired
+  handleAddComment: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  // handleAddVote: (id, type) => dispatch(handleAddVote(id, type))
+  handleAddComment: (data) => dispatch(handleAddComment(data))
 })
 
 export default compose(
