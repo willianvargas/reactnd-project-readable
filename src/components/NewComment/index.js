@@ -18,8 +18,8 @@ class NewComment extends Component {
     body: ''
   }
 
-  handleChange = (field) => (event) => {
-    this.setState({ [field]: event.target.value })
+  handleChange = (field) => (e) => {
+    this.setState({ [field]: e.target.value })
   }
 
   handleSubmit = (e) => {

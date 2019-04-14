@@ -1,4 +1,10 @@
-import { setCommentVote, deleteComment as deleteCommentAPI } from '../../../utils/api'
+import {
+  setCommentVote,
+  editComment as editCommentAPI,
+  deleteComment as deleteCommentAPI
+} from '../../../utils/api'
+
+import { normalizeCommentsShape } from '../../../utils/helpers'
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const UPDATE_VOTESCORE = 'UPDATE_VOTESCORE'
@@ -10,6 +16,15 @@ export const handleAddVote = (id, type) => {
       .then(({ id, voteScore }) => {
         dispatch(updateVoteScore(id, voteScore))
       })
+  }
+}
+
+export const handleEdit = (payload) => {
+  return (dispatch) => {
+    return editCommentAPI(payload)
+    .then((data) => {
+      dispatch(receiveComments(normalizeCommentsShape([data])))
+    })
   }
 }
 

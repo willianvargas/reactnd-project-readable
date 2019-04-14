@@ -21,8 +21,8 @@ class CommentMenu extends Component {
     this.setState(state => ({ open: !state.open }))
   };
 
-  handleClose = (event) => {
-    if (this.anchorEl.contains(event.target)) {
+  handleClose = (e) => {
+    if (this.anchorEl.contains(e.target)) {
       return
     }
     this.setState({ open: false })
