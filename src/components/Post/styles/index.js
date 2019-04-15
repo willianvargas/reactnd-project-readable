@@ -4,21 +4,18 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    margin: [[theme.spacing.unit, 0, theme.spacing.unit * 4]],
+    margin: [[theme.spacing.unit * 2, 0, theme.spacing.unit * 5]],
     padding: theme.spacing.unit * 3,
-    border: [[1, 'solid', theme.palette.grey['A100']]]
-  },
-  header: {
-    paddingBottom: theme.spacing.unit * 2
+    borderTop: [[1, 'solid', theme.palette.grey['A100']]]
   },
   category: {
-    fontSize: '0.9rem',
+    fontSize: '1rem',
     textTransform: 'uppercase',
     color: theme.palette.grey['A200']
   },
   author: {
     color: theme.palette.grey['700'],
-    fontSize: '0.9rem'
+    fontSize: '1rem'
   },
   divider: {
     marginLeft: theme.spacing.unit,
@@ -28,17 +25,14 @@ const styles = theme => ({
   },
   date: {
     color: theme.palette.grey['700'],
-    fontSize: '0.9rem'
+    fontSize: '1rem'
   },
   body: {
-    paddingBottom: theme.spacing.unit * 2,
+    padding: [[theme.spacing.unit * 4, 0, theme.spacing.unit * 2]],
     paddingRight: 72
   },
   bodyText: {
     fontSize: '1.2rem'
-  },
-  footer: {
-    padding: [[theme.spacing.unit, 0]]
   },
   readMoreBtn: {
     textTransform: 'none',

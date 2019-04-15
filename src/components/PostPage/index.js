@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
@@ -21,19 +21,23 @@ class PostPage extends Component {
   }
 
   render() {
-    const { classes, postId, comments } = this.props
+    const { classes, postId, postExists, comments } = this.props
     return (
       <Grid className={classes.root}>
-        <Post id={postId} complete />
-        <Typography variant="h3" align="center">
-          Comments
-        </Typography>
-        <Paper className={classes.comments} elevation={0}>
-          <NewComment parentId={postId} />
-          {comments.map(comment => (
-            <Comment key={comment} id={comment} />
-          ))}
-        </Paper>
+        <Post id={postId} isPage />
+        {postExists && (
+          <Fragment>
+            <Typography variant="h3">
+              Comments
+            </Typography>
+            <Paper className={classes.comments} elevation={1}>
+              <NewComment parentId={postId} />
+              {comments.map(comment => (
+                <Comment key={comment} id={comment} />
+              ))}
+            </Paper>
+          </Fragment>
+        )}
       </Grid>
     )
   }
@@ -43,14 +47,16 @@ class PostPage extends Component {
 PostPage.propTypes = {
   classes: PropTypes.object.isRequired,
   postId: PropTypes.string.isRequired,
+  postExists: PropTypes.bool.isRequired,
   comments: PropTypes.arrayOf(PropTypes.string).isRequired,
   handlePostComments: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ comments }, { match }) => {
+const mapStateToProps = ({ posts, comments }, { match }) => {
   const { postId } = match.params
   return {
     postId,
+    postExists: Boolean(posts[postId]),
     comments: postId ? getPostComments(comments, postId) : []
   }
 }

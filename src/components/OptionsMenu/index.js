@@ -11,10 +11,10 @@ import {
 } from '@material-ui/icons'
 
 
-class CommentMenu extends Component {
+class OptionsMenu extends Component {
 
   state = {
-    open: false,
+    open: false
   }
 
   handleToggle = () => {
@@ -85,9 +85,9 @@ class CommentMenu extends Component {
 
 }
 
-CommentMenu.propTypes = {
+OptionsMenu.propTypes = {
   onEdit: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 }
 
-export default CommentMenu
+export default OptionsMenu

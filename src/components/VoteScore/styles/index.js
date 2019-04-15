@@ -2,7 +2,7 @@ import { grey, green, red } from '@material-ui/core/colors'
 
 const styles = theme => ({
   root: {
-    padding: [[0, theme.spacing.unit * 2]]
+    paddingRight: theme.spacing.unit * 4
   },
   scoreBtn: {
     padding: theme.spacing.unit * 0.5,

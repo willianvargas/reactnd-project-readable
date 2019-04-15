@@ -7,8 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
 
 import { formatDate } from '../../utils/helpers'
+import OptionsMenu from '../OptionsMenu'
 import VoteScore from '../VoteScore'
-import Menu from './components/Menu'
 import EditComment from './components/EditComment'
 import styles from './styles'
 import { handleAddVote, handleEdit, handleDelete } from './actions'
@@ -63,6 +63,7 @@ class Comment extends Component {
             wrap="nowrap"
             container
           >
+            <VoteScore score={comment.voteScore} onAddVote={this.handleAddScore} />
             <Grid direction="column" container item>
               <Typography variant="h4" gutterBottom>
                 {comment.author}
@@ -74,8 +75,7 @@ class Comment extends Component {
                 {comment.body}
               </Typography>
             </Grid>
-            <VoteScore score={comment.voteScore} onAddVote={this.handleAddScore} />
-            <Menu onEdit={this.handleEdit} onDelete={this.handleDelete} />
+            <OptionsMenu onEdit={this.handleEdit} onDelete={this.handleDelete} />
           </Grid>
           <EditComment
             open={editing}

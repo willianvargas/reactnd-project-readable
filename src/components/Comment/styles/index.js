@@ -8,7 +8,7 @@ const styles = theme => ({
     color: theme.palette.grey['700']
   },
   bodyText: {
-    padding: [[theme.spacing.unit * 2, theme.spacing.unit * 2, 0]],
+    paddingTop: theme.spacing.unit * 2,
     fontSize: '1.2rem'
   }
 })

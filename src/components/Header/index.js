@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Typography, Button } from '@material-ui/core'
@@ -40,27 +40,45 @@ class Header extends Component {
             Readable. A React Project
           </Typography>
         </Grid>
-        <Grid 
+        <Grid
           className={classNames(
             classes.navContainer,
             sticky && classes.navContainerSticky
           )}
         >
-          <Grid className={classes.navContent} spacing={8} container>
-            <Grid item>
-              <Button
-                className={classes.homeBtn}
-                activeClassName={classes.homeBtnActive}
-                to="/"
-                component={NavLink}
-                exact
-              >
-                <HomeIcon className={classes.homeBtnIcon} />
-                Home
-              </Button>
+          <Grid
+            className={classes.navContent}
+            justify="space-around"
+            spacing={8}
+            container
+          >
+            <Grid direction="row" spacing={8} container item xs>
+              <Grid item>
+                <Button
+                  className={classes.homeBtn}
+                  activeClassName={classes.homeBtnActive}
+                  to="/"
+                  component={NavLink}
+                  exact
+                >
+                  <HomeIcon className={classes.homeBtnIcon} />
+                  Home
+                </Button>
+              </Grid>
+              <Grid item>
+                <Categories />
+              </Grid>
             </Grid>
             <Grid item>
-              <Categories />
+              <Button
+                component={Link}
+                to="/create"
+                variant="outlined"
+                color="primary"
+                size="large"
+              >
+                Create Post
+              </Button>
             </Grid>
           </Grid>
         </Grid>

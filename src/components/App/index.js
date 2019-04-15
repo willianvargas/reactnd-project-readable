@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import compose from 'recompose/compose'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { MuiThemeProvider, withStyles } from '@material-ui/core/styles'
 import { CssBaseline, Grid } from '@material-ui/core'
@@ -11,6 +11,7 @@ import MuiTheme from '../../styles/MuiTheme'
 import Header from '../Header'
 import PostList from '../PostList'
 import PostPage from '../PostPage'
+import PostEditor from '../PostEditor'
 import styles from './styles'
 import handleInitialData from './actions'
 
@@ -30,8 +31,12 @@ class App extends Component {
           <Grid>
             <Header />
             <Grid className={classes.page}>
-              <Route path='/:category?' component={PostList} exact />
-              <Route path='/post/:postId' component={PostPage} exact />
+              <Switch>
+                <Route path='/create' component={PostEditor} exact />
+                <Route path='/:category?' component={PostList} exact />
+                <Route path='/:category/:postId' component={PostPage} exact />
+                <Route path='/:category/:postId/edit' component={PostEditor} exact />
+              </Switch>
             </Grid>
           </Grid>
         </Router>

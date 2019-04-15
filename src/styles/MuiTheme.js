@@ -23,12 +23,13 @@ export default createMuiTheme({
     h2: {
       fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
       fontWeight: 600,
-      fontSize: '1.8rem'
+      fontSize: '2.1rem'
     },
     h3: {
       fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',
       fontWeight: 600,
-      fontSize: '1.6rem'
+      fontSize: '2rem',
+      padding: 8
     },
     h4: {
       fontFamily: '"Titillium Web", "Helvetica", "Arial", sans-serif',

@@ -4,7 +4,7 @@ const styles = theme => ({
     flexGrow: 1,
     maxWidth: 1080,
     margin: [[0, 'auto']],
-    padding: theme.spacing.unit
+    padding: theme.spacing.unit * 2
   },
 })
 

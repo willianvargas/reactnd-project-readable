@@ -11,11 +11,18 @@ import SendIcon from '@material-ui/icons/Send'
 import handleAddComment from './actions'
 import styles from './styles'
 
+const initialState = {
+  author: '',
+  body: ''
+}
+
 class NewComment extends Component {
 
-  state = {
-    author: '',
-    body: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      ...initialState
+    }
   }
 
   handleChange = (field) => (e) => {
@@ -34,8 +41,7 @@ class NewComment extends Component {
 
   afterSubmit = () => {
     this.setState({
-      author: '',
-      body: ''
+      ...initialState
     })
   }
 
@@ -96,7 +102,7 @@ NewComment.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  handleAddComment: (data) => dispatch(handleAddComment(data))
+  handleAddComment: (payload) => dispatch(handleAddComment(payload))
 })
 
 export default compose(
