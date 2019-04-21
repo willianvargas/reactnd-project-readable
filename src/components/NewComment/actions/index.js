@@ -1,12 +1,11 @@
 import { addPostComment } from '../../../utils/api'
-import { normalizeCommentsShape } from '../../../utils/helpers'
-import { receiveComments } from '../../Comment/actions'
+import { addComment } from '../../Comment/actions'
 
 const handleAddComment = (data) => {
   return (dispatch) => {
     return addPostComment(data)
       .then((data) => {
-        dispatch(receiveComments(normalizeCommentsShape([data])))
+        dispatch(addComment(data))
       })
   }
 }
